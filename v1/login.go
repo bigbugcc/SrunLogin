@@ -19,7 +19,7 @@ func Login(c *srunTransfer.Login) error {
 		if c.CheckNetUrl != "" {
 			util.Checker.SetUrl(c.CheckNetUrl)
 		}
-		util.Log.Info("欢迎使用SrunLogin 版本: 1.0.0")
+		util.Log.Info("欢迎使用SrunLogin 版本: 1.1.0")
 		util.Log.Info("Copyright (C) 2022 BigBug - YNNU")
 		util.Log.Info("Step0: 检查状态…")
 		if util.Checker.NetOk(c.Transport) {
@@ -49,7 +49,7 @@ func Login(c *srunTransfer.Login) error {
 		if _, data, e := tool.HTTP.GetString(&tool.GetRequest{
 			Url: G.UrlGetChallengeApi,
 			Query: map[string]interface{}{
-				"callback": "jQuery112403073434931465766_1646903210570",
+				"callback": "callback",
 				"username": G.Form.UserName,
 				"ip":       G.Ip,
 			},
@@ -89,7 +89,7 @@ func Login(c *srunTransfer.Login) error {
 		if _, res, e := tool.HTTP.GetString(&tool.GetRequest{
 			Url: G.UrlLoginApi,
 			Query: map[string]interface{}{
-				"callback":     "jQuery112403073434931465766_1646903210570",
+				"callback":     util.CallBackStr(),
 				"action":       "login",
 				"username":     G.Form.UserName,
 				"password":     G.EncryptedMd5,

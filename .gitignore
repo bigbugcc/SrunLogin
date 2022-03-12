@@ -1,3 +1,6 @@
 /.idea/
 /Config*
+/main.*
 /GoBuilder.bat
+/srun
+/main

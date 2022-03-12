@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"io"
 	"regexp"
+	"strconv"
+	"time"
 )
 
 func Search(reg string, content string) (string, error) {
@@ -53,4 +55,9 @@ func Sha1(content string) string {
 	h.Write([]byte(content))
 	bs := h.Sum(nil)
 	return fmt.Sprintf("%x\n", bs)
+}
+
+// CallBackStr 生成随机时间戳字符串
+func CallBackStr() string {
+	return "jQuery" + strconv.FormatInt(time.Now().UnixNano(), 10) + "_" + strconv.FormatInt(time.Now().UnixNano()/1e6, 10)
 }
