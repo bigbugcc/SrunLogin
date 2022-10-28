@@ -1,0 +1,13 @@
+<service> 
+  <id>SrunLogin</id> 
+  <name>SrunLogin</name> 
+  <description>校园网登录服务</description> 
+  <executable>C:\Users\bigbug\Desktop\SrunLogin\SrunLogin.exe</executable> 
+  <arguments>--config=./config02.yaml</arguments> 
+  <onfailure action="restart" delay="60 sec"/> 
+  <log mode="roll-by-size"> 
+    <sizeThreshold>5120</sizeThreshold> 
+    <keepFiles>3</keepFiles> 
+  </log> 
+  <logpath>logs</logpath> 
+</service> 

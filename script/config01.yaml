@@ -1,0 +1,27 @@
+form:
+  domain: netlogin.ynnu.edu.cn  
+  username: "2023205000077"  #你的学号
+  password: "abc123"		#你的校园网登录密码
+meta:
+  "n": "200"
+  type: "1"
+  acid: "1"
+  enc: srun_bx1
+settings:
+  basic:
+    https: true
+    skip_cert_verify: false
+    timeout: 5
+    interfaces: ""
+    skip_net_check: false
+    net_check_url: https://www.baidu.com/
+  guardian:
+    enable: false
+    duration: 15
+  daemon:
+    enable: false
+    path: .srun
+  debug:
+    enable: false
+    write_log: false
+    log_path: ./
