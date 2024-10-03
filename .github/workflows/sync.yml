@@ -1,0 +1,45 @@
+name: Sync
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 */6 * * *"
+
+env:
+  repo_url: 'https://github.com/Mmx233/BitSrunLoginGo.git'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:    
+      - name: 'Checking'
+        uses: actions/checkout@v4
+        with:
+          ref: sync
+
+      - name: Init Env
+        run: |
+          sudo -E apt-get -qq install git curl wget openssl -y  
+
+      - name: Merge Upstream
+        run: |
+          git remote add upstream $repo_url
+          git fetch upstream
+          git checkout sync
+          git merge upstream/main --no-edit
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.UPDATE_TOKEN }}
+          branch: sync
+          repository: bigbugcc/srunlogin
+          force: true
+
+      - name: Delete workflow runs
+        uses: GitRML/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 2
